@@ -47,7 +47,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-white text-black">
+    <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-slate-900 text-white">
       {/* Background Image */}
       <div className="absolute inset-0">
         <motion.img
@@ -58,19 +58,19 @@ export const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeInOut" }}
         />
-      {/* Gradient Overlay 
-       <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-transparent to-[#0a1845]/90" />
-      */}</div>
+        {/* Dark overlay for better text readability on mobile */}
+        <div className="absolute inset-0 bg-black/60 md:bg-black/40" />
+      </div>
 
       
       {/* Main Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[1580px] flex-col lg:flex-row items-center justify-between px-6 sm:px-10 lg:px-20 gap-10 lg:gap-16 text-center lg:text-left">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1580px] flex-col lg:flex-row items-center justify-between px-5 sm:px-10 lg:px-20 gap-10 lg:gap-16 text-center lg:text-left pt-32 pb-16 lg:py-0">
         {/* LEFT SIDE - Animated Heading */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col items-center lg:items-start text-left max-w-[620px] space-y-6 lg:space-y-8 mt-20 lg:mt-0"
+          className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-[620px] space-y-6 lg:space-y-8"
         >
           {/* Animated Text */}
           <div className="relative flex items-center justify-center lg:justify-start min-h-[5rem] sm:min-h-[6rem]">
@@ -81,7 +81,7 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -25 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#d4a017]"
+                className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#d4a017] drop-shadow-lg"
               >
                 {texts[index]}
               </motion.h1>
@@ -101,25 +101,26 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="inline-block whitespace-nowrap rounded-full bg-[#d4a017]/15 px-6 sm:px-8 py-2 text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.15em] text-white font-semibold border border-[#d4a017]/30 shadow-sm"
+            className="inline-block rounded-full bg-[#d4a017]/20 px-5 sm:px-8 py-2 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.15em] text-white font-semibold border border-[#d4a017]/30 backdrop-blur-sm shadow-sm"
           >
             Your Trusted Partner for Startup Legalities
           </motion.div>
 
           {/* Description */}
-          <p className="text-xs sm:text-sm md:text-base leading-relaxed text-white max-w-[480px]">
+          <p className="text-sm sm:text-base leading-relaxed text-white max-w-[480px] drop-shadow-md">
             Ak Law Chamber, founded in 2014, has been serving clients
             across India with the vision of providing a complete business
-            solution — from company incorporation and taxation to intellectual
+            solution from company incorporation and taxation to intellectual
             property and compliance management.
           </p>
 
           {/* CTA Button */}
-          <div className="pt-6">
+          <div className="pt-6 w-full sm:w-auto">
             <motion.a
               whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d4a017] px-7 sm:px-8 py-3 text-sm font-semibold text-black shadow-lg hover:bg-[#f1c94c] transition"
+              className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#d4a017] px-8 py-3.5 text-sm font-bold text-black shadow-lg hover:bg-[#f1c94c] transition-all"
             >
               Get Free Consultation
               <ArrowRight className="w-4 h-4" />
@@ -139,9 +140,15 @@ export default function Home() {
     <main id="top">
       <HeroSection />
 
-      <section className="shell homepage-overview">
-        <div className="overview-grid">
-          <article className="overview-card">
+      <section className="shell homepage-overview px-5 sm:px-10 lg:px-20 py-16 md:py-24">
+        <div className="overview-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.article 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="overview-card"
+          >
             <span className="section-tag">About Us</span>
             <h3>Professional legal help that is easier to access and easier to understand</h3>
             <p>
@@ -151,9 +158,15 @@ export default function Home() {
             <Link href="/about" className="text-link">
               Learn more
             </Link>
-          </article>
+          </motion.article>
 
-          <article className="overview-card overview-card-image">
+          <motion.article 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="overview-card overview-card-image"
+          >
             <div className="overview-image">
               <Image
                 src={imageLibrary.team}
@@ -162,9 +175,15 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-          </article>
+          </motion.article>
 
-          <article className="overview-card">
+          <motion.article 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="overview-card"
+          >
             <span className="section-tag">Why Clients Choose Us</span>
             <ul className="overview-list">
               <li>
@@ -180,23 +199,36 @@ export default function Home() {
                 <span>Advice is structured to be usable, business-aware, and handled with discretion.</span>
               </li>
             </ul>
-          </article>
+          </motion.article>
         </div>
       </section>
 
-      <section className="services-section shell" id="services">
-        <div className="section-heading narrow">
+      <section className="services-section shell px-5 sm:px-10 lg:px-20 py-16 md:py-24" id="services">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="section-heading narrow"
+        >
           <span className="section-tag">Services</span>
           <h2>How we support clients across core legal and documentation needs</h2>
           <p>
             Our homepage focuses on the legal areas clients most often need help
             with first: consultation, company setup, contracts, notices, and intellectual property.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="services-grid">
+        <div className="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-10">
           {homepageServices.map((service, index) => (
-            <article key={service.title} className="service-card">
+            <motion.article 
+              key={service.title} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="service-card"
+            >
               <div className="service-visual service-visual-strong">
                 <Image src={service.image} alt={service.title} fill className="object-cover" />
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -205,29 +237,48 @@ export default function Home() {
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </section>
 
-      <section className="metrics-section">
-        <div className="shell">
-          <div className="section-heading light">
+      <section className="metrics-section py-16 md:py-24 bg-gray-50/50">
+        <div className="shell px-5 sm:px-10 lg:px-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="section-heading light"
+          >
             <h2>Built to make legal help feel more accessible, structured, and dependable</h2>
-          </div>
-          <div className="metrics-grid">
-            {stats.map((item) => (
-              <article key={item.value} className="metric-card">
+          </motion.div>
+          <div className="metrics-grid grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-10">
+            {stats.map((item, index) => (
+              <motion.article 
+                key={item.value} 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="metric-card"
+              >
                 <h3>{item.value}</h3>
                 <p>{item.label}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="consult-section shell" id="contact">
-        <div className="section-heading narrow">
+      <section className="consult-section shell px-5 sm:px-10 lg:px-20 py-16 md:py-24" id="contact">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="section-heading narrow"
+        >
           <span className="section-tag">Request a Consultation</span>
           <h2>Tell us your concern and we will help you understand the right next step</h2>
           <p>
@@ -235,10 +286,16 @@ export default function Home() {
             compliance question. Our team will review the context and respond with
             a practical consultation path.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="consult-grid">
-          <form className="consult-card form-card">
+        <div className="consult-grid grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+          <motion.form 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="consult-card form-card"
+          >
             <label>
               Name
               <input type="text" placeholder="Your full name" />
@@ -261,23 +318,29 @@ export default function Home() {
             <button type="submit" className="button-dark">
               Submit Request
             </button>
-          </form>
+          </motion.form>
 
-          <aside className="consult-card office-card">
+          <motion.aside 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="consult-card office-card"
+          >
             <h3>Corporate Office</h3>
             <p>Reach out for confidential legal support, documentation guidance, and business advisory.</p>
 
             <div className="office-item">
               <strong>Our Location</strong>
-              <span>A-5, Pamposh Enclave, GK-1, South Delhi, New Delhi 110048, IN</span>
+              <span>123 Example Street, City, Country 00000</span>
             </div>
             <div className="office-item">
               <strong>Email Us</strong>
-              <span>lawfirmedwincce@gmail.com</span>
+              <span>example@example.com</span>
             </div>
             <div className="office-item">
               <strong>Call Us</strong>
-              <span>+91 99111 69979</span>
+              <span>+1 234 567 8900</span>
             </div>
 
             <div className="office-hours">
@@ -291,11 +354,18 @@ export default function Home() {
                 <span>Closed</span>
               </div>
             </div>
-          </aside>
+          </motion.aside>
         </div>
       </section>
 
-      <section className="testimonial-section shell" id="testimonials">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="testimonial-section shell px-5 sm:px-10 lg:px-20 py-16 md:py-24" 
+        id="testimonials"
+      >
         <div className="testimonial-card">
           <div>
             <p className="stars">★★★★★</p>
@@ -311,26 +381,46 @@ export default function Home() {
             IM
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="faq-section shell" id="faq">
-        <div className="section-heading narrow">
+      <section className="faq-section shell px-5 sm:px-10 lg:px-20 py-16 md:py-24" id="faq">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="section-heading narrow"
+        >
           <span className="section-tag">FAQs</span>
           <h2>Answers for decision-makers planning the next move</h2>
-        </div>
+        </motion.div>
 
-        <div className="faq-list">
+        <div className="faq-list flex flex-col gap-4 mt-8">
           {faqs.map((faq, index) => (
-            <details key={faq.question} open={index === 0} className="faq-item">
-              <summary>{faq.question}</summary>
-              <p>{faq.answer}</p>
-            </details>
+            <motion.div
+              key={faq.question}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
+              <details open={index === 0} className="faq-item">
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      <section className="cta-strip">
-        <div className="shell cta-strip-inner">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="cta-strip px-5 sm:px-10 lg:px-20 py-16 md:py-24"
+      >
+        <div className="shell cta-strip-inner flex flex-col items-center text-center gap-6">
           <h2>Secure your business foundations with a partner-first law firm</h2>
           <p>
             Schedule a discovery call to align legal, tax, and IP strategies
@@ -340,7 +430,7 @@ export default function Home() {
             Schedule Discovery Call
           </Link>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }

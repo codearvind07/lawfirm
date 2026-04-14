@@ -23,7 +23,7 @@ export function SiteFooter() {
         <div className="grid gap-10 rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-900 via-[#12264b] to-slate-950 p-8 shadow-[0_30px_80px_rgba(15,23,42,0.35)] lg:grid-cols-[1.2fr_0.8fr_0.9fr] lg:p-10">
           <div className="space-y-6">
             <div className="inline-flex items-center rounded-full border border-amber-300/20 bg-amber-300/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-200">
-              Edwin Corporate Law Firm
+              Ak Law Chamber
             </div>
 
             <div className="space-y-4">
@@ -82,8 +82,7 @@ export function SiteFooter() {
                   Corporate Office
                 </p>
                 <p className="mt-2 text-sm leading-6 text-slate-200">
-                  A-5, G/F, Pamposh Enclave, Near Nehru Place Flyover, GK-1,
-                  Delhi 110048
+                  123 Example Street, City, Country 00000
                 </p>
               </div>
 
@@ -92,10 +91,10 @@ export function SiteFooter() {
                   Email
                 </p>
                 <a
-                  href="mailto:lawfirmedwincce@gmail.com"
+                  href="mailto:example@example.com"
                   className="mt-2 block text-sm text-slate-200 transition hover:text-amber-200"
                 >
-                  lawfirmedwincce@gmail.com
+                  example@example.com
                 </a>
               </div>
 
@@ -104,10 +103,10 @@ export function SiteFooter() {
                   Call
                 </p>
                 <a
-                  href="tel:+919911169979"
+                  href="tel:+12345678900"
                   className="mt-2 block text-sm text-slate-200 transition hover:text-amber-200"
                 >
-                  +91 99111 69979
+                  +1 234 567 8900
                 </a>
               </div>
             </div>
@@ -115,7 +114,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Edwin Corporate Law Firm. All rights reserved.</p>
+          <p>© {year} Ak Law Chamber. All rights reserved.</p>
           <div className="flex flex-wrap gap-3 sm:justify-end">
             {practiceAreas.map((item) => (
               <span
